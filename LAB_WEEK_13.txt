@@ -1,0 +1,30 @@
+ASSIGNMENT ANSWERS
+
+
+1. Why is MVVM important? Which files represent Model, which files represent View, and which files represent ViewModel?
+MVVM penting karena memisahkan tampilan (UI) dan logika sehingga aplikasi lebih mudah dikembangkan, diuji, diperbaiki, serta lebih terstruktur. Dengan MVVM, perubahan UI tidak memengaruhi logika bisnis, dan perubahan logika tidak perlu mengubah UI.
+
+Model: Movie.kt, MovieService, MovieRepository, MovieDatabase, MovieDao
+View: activity_main.xml, item layout (view_movie_item.xml), MainActivity
+ViewModel: MovieViewModel
+
+
+2. In Part 1, you implemented Data Binding, why is this more efficient than using the normal method?
+Data Binding lebih efisien karena memungkinkan View langsung terhubung ke data di ViewModel tanpa perlu findViewById atau observe manual. Perubahan data otomatis meng-update UI. Kode menjadi lebih sedikit, rapi, dan mengurangi potensi error.
+
+
+3. In Part 2, you implemented the Singleton Pattern, why is this important?
+Singleton Pattern penting untuk memastikan hanya ada satu instance database yang digunakan di seluruh aplikasi. Tanpa singleton, bisa terjadi banyak instance yang aktif, menyebabkan pemborosan memori, data tidak konsisten, dan potensi race condition.
+
+
+4. In Part 2 & 3, you implemented the Repository Pattern, why is this important?
+Repository Pattern penting karena menjadi penghubung yang konsisten antara sumber data API dan database lokal. Dengan pola ini, ViewModel tidak peduli data berasal dari mana. Repository juga memudahkan caching, offline mode, dan memperbaiki struktur arsitektur aplikasi.
+
+
+5. In part 3, you implemented the Worker Manager, is there another way to refresh your database with the latest data other than using Worker?
+Ada, yaitu:
+- Menggunakan AlarmManager untuk men-schedule task.
+- Menggunakan foreground service untuk pembaruan data terus-menerus.
+- Menggunakan manual refresh oleh pengguna (misalnya tombol refresh atau swipe-to-refresh).
+
+Namun WorkManager adalah cara paling ideal karena berjalan terjadwal, efisien, dan tetap aktif meskipun aplikasi ditutup atau perangkat restart.
