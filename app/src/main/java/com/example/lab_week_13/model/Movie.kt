@@ -1,28 +1,45 @@
 package com.example.lab_week_13.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
+@Entity(tableName = "movies")
 data class Movie(
-    val adult: Boolean = false,
-    val backdrop_path: String? = null,
+
+    @PrimaryKey
     val id: Int = 0,
-    @field:Json(name = "original_language")
-    val originalLanguage: String? = null,
-    @field:Json(name = "original_title")
-    val originalTitle: String? = null,
-    val overview: String? = null,
+
+    val adult: Boolean = false,
+
+    // Room butuh default value, Moshi boleh nullable
+    val backdrop_path: String? = "",
+
+    @Json(name = "original_language")
+    val originalLanguage: String? = "",
+
+    @Json(name = "original_title")
+    val originalTitle: String? = "",
+
+    val overview: String? = "",
+
     val popularity: Float = 0f,
-    @field:Json(name = "poster_path")
-    val posterPath: String? = null,
-    @field:Json(name = "release_date")
-    val releaseDate: String? = null,
-    val title: String? = null,
+
+    @Json(name = "poster_path")
+    val posterPath: String? = "",
+
+    @Json(name = "release_date")
+    val releaseDate: String? = "",
+
+    val title: String? = "",
+
     val video: Boolean = false,
-    @field:Json(name = "vote_average")
+
+    @Json(name = "vote_average")
     val voteAverage: Float = 0f,
-    @field:Json(name = "vote_count")
+
+    @Json(name = "vote_count")
     val voteCount: Int = 0
 )
-
